@@ -238,67 +238,7 @@ export default function InstallPromptModal({ deferredPrompt, onInstallSuccess }:
                 </div>
               </div>
 
-              {/* Actions Section */}
-              <div className="space-y-3">
-                {isIOS ? (
-                  /* Custom step-by-step instruction panel for iOS / Apple Safari */
-                  <div className="bg-white dark:bg-gray-900 border border-amber-100 dark:border-gray-800 rounded-2xl p-4 text-right space-y-3 shadow-inner">
-                    <h4 className="text-xs font-black text-amber-950 dark:text-amber-300 flex items-center gap-1">
-                      <AlertCircle className="w-4 h-4 text-amber-500" />
-                      <span>خطوات التثبيت السريعة للآيفون (iOS):</span>
-                    </h4>
-                    
-                    <ol className="space-y-2.5 text-xs text-gray-600 dark:text-gray-400">
-                      <li className="flex items-center gap-2">
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/10 text-amber-800 dark:text-amber-400 font-extrabold text-[10px] flex items-center justify-center">
-                          1
-                        </span>
-                        <span className="flex items-center gap-1.5 flex-wrap">
-                          اضغطي على زر 
-                          <span className="inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded-lg font-bold text-[10px]">
-                            <Share2 className="w-3.5 h-3.5 text-blue-500" /> مشاركة (Share)
-                          </span>
-                          في شريط سفلي للمتصفح.
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/10 text-amber-800 dark:text-amber-400 font-extrabold text-[10px] flex items-center justify-center">
-                          2
-                        </span>
-                        <span className="flex items-center gap-1.5 flex-wrap">
-                          مرري للأسفل واختاري 
-                          <span className="inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded-lg font-bold text-[10px]">
-                            <PlusSquare className="w-3.5 h-3.5 text-gray-500" /> إضافة إلى الشاشة الرئيسية
-                          </span>
-                        </span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/10 text-amber-800 dark:text-amber-400 font-extrabold text-[10px] flex items-center justify-center">
-                          3
-                        </span>
-                        <span>
-                          اضغطي على <strong>إضافة (Add)</strong> بالأعلى لتثبيت التطبيق بنجاح! 🎉
-                        </span>
-                      </li>
-                    </ol>
-
-                    <div className="pt-2 text-center flex flex-col items-center justify-center text-[10px] text-gray-400 animate-bounce">
-                      <span>اضغطي بالأسفل على زر المشاركة ثم "إضافة للشاشة الرئيسية" 🔽</span>
-                    </div>
-                  </div>
-                ) : (
-                  /* Standard Android / Chrome / PC / Mac layout with a direct, single install button */
-                  <div className="space-y-4 text-right">
-                    {/* Direct Install Button */}
-                    <button
-                      onClick={handleInstallClick}
-                      className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-black text-sm py-4 px-6 rounded-2xl shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer animate-pulse"
-                    >
-                      <Download className="w-5 h-5" />
-                      <span>تثبيت التطبيق الآن كتطبيق حقيقي ⚡</span>
-                    </button>
-
-                    {/* Direct Android APK Download Button */}
+              
                     <button
                       onClick={() => {
                         const adminSettingsObj = Database.getAdminSettings();
@@ -329,34 +269,6 @@ export default function InstallPromptModal({ deferredPrompt, onInstallSuccess }:
                         </p>
                       </div>
                     )}
-
-                    {showManualStepsFallback && (
-                      <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200 dark:border-gray-800 rounded-xl p-3 text-xs text-gray-700 dark:text-gray-300">
-                        <p className="font-bold flex items-center gap-1 text-amber-800 dark:text-amber-400">
-                          <AlertCircle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
-                          <span>توجيه للتثبيت اليدوي:</span>
-                        </p>
-                        <p className="mt-1 text-[11px] leading-relaxed">
-                          إذا لم يستجب متصفحكِ للتثبيت التلقائي المباشر، يمكنكِ النقر على زر خيارات المتصفح الخاص بكِ (⋮) بالأعلى أو الأسفل، ثم اختيار <strong>تثبيت التطبيق (Install App)</strong> أو <strong>إضافة إلى الشاشة الرئيسية</strong> لتنزيله فوراً كتطبيق مستقل حقيقي بجميع المزايا! 🌸
-                        </p>
-                      </div>
-                    )}
-
-                    {!localDeferredPrompt && !showManualStepsFallback && (
-                      <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-3 text-xs text-gray-600 dark:text-gray-400">
-                        <p className="font-bold flex items-center gap-1 text-amber-800 dark:text-amber-400">
-                          <AlertCircle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
-                          <span>إذا لم يبدأ التثبيت تلقائياً عند النقر:</span>
-                        </p>
-                        <p className="mt-1 text-[11px] leading-relaxed">
-                          يمكنكِ النقر على خيارات المتصفح الخاص بكِ (⋮) ثم اختيار <strong>تثبيت التطبيق (Install App)</strong> أو <strong>إضافة إلى الشاشة الرئيسية</strong> يدوياً لتنزيله فوراً كتطبيق مستقل. 🌸
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Continue in Browser Button */}
                 <button
                   onClick={handleDismiss}
                   className="w-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-750 text-gray-700 dark:text-gray-300 font-bold text-xs py-3 px-6 rounded-xl transition duration-200 cursor-pointer"
