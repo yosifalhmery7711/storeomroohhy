@@ -1,0 +1,185 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "currency": { "type": "string" },
+        "balance": { "type": "number" },
+        "giftBalance": { "type": "number" }
+      },
+      "required": ["id", "name", "phone", "currency", "balance"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "image": { "type": "string" },
+        "productCount": { "type": "number" }
+      },
+      "required": ["id", "name", "image"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Product details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "categoryName": { "type": "string" },
+        "description": { "type": "string" },
+        "priceYERNew": { "type": "number" },
+        "images": { "type": "array" },
+        "properties": { "type": "array" },
+        "isOnOffer": { "type": "boolean" },
+        "offerPriceNew": { "type": "number" },
+        "offerOldPrice": { "type": "number" },
+        "rating": { "type": "number" }
+      },
+      "required": ["id", "code", "name", "categoryId", "categoryName", "priceYERNew", "images", "properties", "isOnOffer", "rating"]
+    },
+    "DeliveryLocation": {
+      "title": "DeliveryLocation",
+      "description": "Delivery locations and fees",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "deliveryFee": { "type": "number" }
+      },
+      "required": ["id", "name", "deliveryFee"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "address": { "type": "string" },
+        "deliveryLocation": { "type": "object" },
+        "items": { "type": "array" },
+        "totalPrice": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "currency": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "userName", "userPhone", "address", "deliveryLocation", "items", "totalPrice", "paymentMethod", "currency", "status", "createdAt"]
+    },
+    "Gift": {
+      "title": "Gift",
+      "description": "Gift sent to user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "amount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "userName", "userPhone", "amount", "createdAt"]
+    },
+    "RechargeRequest": {
+      "title": "RechargeRequest",
+      "description": "Recharge request details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhone": { "type": "string" },
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "proofImage": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "userName", "userPhone", "amount", "currency", "proofImage", "status", "createdAt"]
+    },
+    "PhoneChangeRequest": {
+      "title": "PhoneChangeRequest",
+      "description": "Phone number change request",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "oldPhone": { "type": "string" },
+        "newPhone": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "userName", "oldPhone", "newPhone", "status", "createdAt"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Notification message",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "isRead": { "type": "boolean" }
+      },
+      "required": ["id", "title", "message", "createdAt", "isRead"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile records"
+    },
+    "/categories/{categoryId}": {
+      "schema": { "$ref": "#/entities/Category" },
+      "description": "Product categories"
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Products details"
+    },
+    "/locations/{locationId}": {
+      "schema": { "$ref": "#/entities/DeliveryLocation" },
+      "description": "Delivery locations"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Client orders"
+    },
+    "/gifts/{giftId}": {
+      "schema": { "$ref": "#/entities/Gift" },
+      "description": "Sent gifts list"
+    },
+    "/recharges/{rechargeId}": {
+      "schema": { "$ref": "#/entities/RechargeRequest" },
+      "description": "User wallet recharge requests"
+    },
+    "/phone_requests/{requestId}": {
+      "schema": { "$ref": "#/entities/PhoneChangeRequest" },
+      "description": "User phone number change requests"
+    },
+    "/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/Notification" },
+      "description": "System or user notifications"
+    },
+    "/settings/{settingId}": {
+      "schema": "object",
+      "description": "App settings (advisor, admin, general)"
+    }
+  }
+}
