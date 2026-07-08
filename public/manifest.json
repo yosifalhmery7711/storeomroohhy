@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "short_name": "متجر أم روح",
+  "name": "متجر أم روح للأسر المنتجة باليمن",
+  "description": "منصتك للتسوق من الأسر المنتجة باليمن - أدوات منزلية، ملابس، ألعاب، ومستحضرات تجميل",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#fffdfa",
+  "theme_color": "#d97706",
+  "display": "standalone",
+  "orientation": "portrait"
+}
