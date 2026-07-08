@@ -1,0 +1,6 @@
+{
+  "firestore": {
+    "database": "ai-studio-remixremixremixu-74910bc8-ebe1-4039-b0a8-75eae5559f8b",
+    "rules": "firestore.rules"
+  }
+}
