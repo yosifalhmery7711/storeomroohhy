@@ -1,0 +1,8 @@
+{
+  "name": " Um Rouh Store2",
+  "description": "Browse products, manage your cart, and order via WhatsApp with integrated payment proof uploads and live exchange rate management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
